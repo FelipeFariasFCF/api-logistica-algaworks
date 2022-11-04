@@ -12,7 +12,7 @@ public class BuscaEntregaService {
 
     private EntregaRepository entregaRepository;
 
-    public Entrega buscar(long entregaId){
+    public Entrega buscar(long entregaId) {
         return entregaRepository.findById(entregaId)
                 .orElseThrow(() -> new EntidadeNaoEncontradaException("Entrega nao encontrada."));
     }

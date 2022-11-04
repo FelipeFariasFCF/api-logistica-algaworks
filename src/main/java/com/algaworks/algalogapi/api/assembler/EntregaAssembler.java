@@ -16,15 +16,15 @@ public class EntregaAssembler {
 
     private ModelMapper modelMapper;
 
-    public EntregaModel toModel(Entrega entrega){
+    public EntregaModel toModel(Entrega entrega) {
         return modelMapper.map(entrega, EntregaModel.class);
     }
 
-    public Entrega toEntity(EntregaInput entregaInput){
+    public Entrega toEntity(EntregaInput entregaInput) {
         return modelMapper.map(entregaInput, Entrega.class);
     }
 
-    public List<EntregaModel> toCollectionModel(List<Entrega> entregas){
+    public List<EntregaModel> toCollectionModel(List<Entrega> entregas) {
         return entregas.stream()
                 .map(this::toModel)
                 .collect(Collectors.toList());

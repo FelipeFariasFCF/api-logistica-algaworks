@@ -15,11 +15,11 @@ public class OcorrenciaAssembler {
 
     private ModelMapper modelMapper;
 
-    public OcorrenciaModel toModel(Ocorrencia ocorrencia){
+    public OcorrenciaModel toModel(Ocorrencia ocorrencia) {
         return modelMapper.map(ocorrencia, OcorrenciaModel.class);
     }
 
-    public List<OcorrenciaModel> toCollectionModel(List<Ocorrencia> ocorrencias){
+    public List<OcorrenciaModel> toCollectionModel(List<Ocorrencia> ocorrencias) {
         return ocorrencias.stream().map(this::toModel).collect(Collectors.toList());
     }
 }

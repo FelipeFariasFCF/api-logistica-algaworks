@@ -16,15 +16,15 @@ public class ClienteAssembler {
 
     private ModelMapper modelMapper;
 
-    public ClienteModel toModel(Cliente cliente){
+    public ClienteModel toModel(Cliente cliente) {
         return modelMapper.map(cliente, ClienteModel.class);
     }
 
-    public Cliente toEntity(ClienteInput clienteInput){
+    public Cliente toEntity(ClienteInput clienteInput) {
         return modelMapper.map(clienteInput, Cliente.class);
     }
 
-    public List<ClienteModel> toCollectionModel(List<Cliente> clientes){
+    public List<ClienteModel> toCollectionModel(List<Cliente> clientes) {
         return clientes.stream()
                 .map(this::toModel)
                 .collect(Collectors.toList());

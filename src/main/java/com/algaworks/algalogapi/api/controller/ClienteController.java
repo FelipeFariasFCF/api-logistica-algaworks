@@ -29,7 +29,7 @@ public class ClienteController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ClienteModel> buscar(@PathVariable Long id){
+    public ResponseEntity<ClienteModel> buscar(@PathVariable Long id) {
         return clienteRepository.findById(id)
                 .map(cliente -> ResponseEntity.ok(clienteAssembler.toModel(cliente)))
                 .orElse(ResponseEntity.notFound().build());
@@ -37,15 +37,15 @@ public class ClienteController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ClienteModel adicionar(@Valid @RequestBody ClienteInput clienteInput){
+    public ClienteModel adicionar(@Valid @RequestBody ClienteInput clienteInput) {
         Cliente novoCliente = clienteAssembler.toEntity(clienteInput);
         Cliente salvarCliente = catalogoClienteService.salvar(novoCliente);
         return clienteAssembler.toModel(salvarCliente);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Cliente> atualizar(@PathVariable Long id,@Valid @RequestBody Cliente cliente){
-        if(!clienteRepository.existsById(id)){
+    public ResponseEntity<Cliente> atualizar(@PathVariable Long id, @Valid @RequestBody Cliente cliente) {
+        if (!clienteRepository.existsById(id)) {
             return ResponseEntity.notFound().build();
         }
         cliente.setId(id);
@@ -54,8 +54,8 @@ public class ClienteController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> remover(@PathVariable Long id){
-        if(!clienteRepository.existsById(id)){
+    public ResponseEntity<Void> remover(@PathVariable Long id) {
+        if (!clienteRepository.existsById(id)) {
             return ResponseEntity.notFound().build();
         }
         catalogoClienteService.excluir(id);
